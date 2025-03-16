@@ -1,0 +1,232 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-800 text-white">
+    <div class="flex flex-col md:flex-row h-screen">
+        <div class="w-full md:w-1/5 bg-gray-900 p-4">
+            <div class="mb-6">
+                <i class="fas fa-cloud-sun text-2xl"></i>
+            </div>
+            <div class="space-y-6">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-cloud text-xl"></i>
+                    <span class="weather"> Weather</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-city text-xl"></i>
+                    <span>Cities</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map text-xl"></i>
+                    <span>Map</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-cog text-xl"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:w-4/5 p-6">
+            <div class="flex justify-between items-center mb-6">
+                <input type="text" placeholder="Search for cities"
+                    class="w-full p-2 rounded bg-gray-700 text-white citys">
+            </div>
+            <div class="flex flex-col lg:flex-row justify-between">
+                <div class="w-full lg:w-2/3 bg-gray-900 p-6 rounded-lg mb-6 lg:mb-0">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h1 class="text-2xl font-bold" id="city-name"></h1>
+                            <p id="weather-condition"></p>
+                            <h2 class="text-6xl font-bold" id="temperature"></h2>
+                        </div>
+                        <div>
+                            <i class="fas fa-sun text-8xl text-yellow-500"></i>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2">Today's Forecast</h3>
+                        <div class="flex justify-between bg-gray-800 p-4 rounded-lg overflow-x-auto">
+                            <div class="text-center">
+                                <p>MinTemp</p>
+                                <i class="fas fa-thermometer-half text-2xl"></i>
+                                <p id="min-temp"></p>
+                            </div>
+                            <div class="text-center">
+                                <p>MaxTemp</p>
+                                <i class="fas fa-thermometer-half text-2xl"></i>
+                                <p id="max-temp"></p>
+                            </div>
+                            <div class="text-center">
+                                <p>RealFeel</p>
+                                <i class="fas fa-wind text-2xl"></i>
+                                <p id="real-feel"></p>
+                            </div>
+                            <div class="text-center">
+                                <p>Pressure</p>
+                                <i class="fas fa-fan text-2xl"></i>
+                                <p id="pressure"></p>
+                            </div>
+                            <div class="text-center">
+                                <p>Humidity</p>
+                                <i class="fas fa-seedling text-2xl"></i>
+                                <p id="humidity"></p>
+                            </div>
+                            <div class="text-center">
+                                <p>Sea_level</p>
+                                <i class="fas fa-water text-2xl"></i>
+                                <p id="sea-level"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-2">Air Conditions</h3>
+                        <div class="flex flex-col md:flex-row justify-between">
+                            <div class="mb-4 md:mb-0">
+                                <p><i class="fas fa-thermometer-half"></i> Real Feel</p>
+                                <p class="text-2xl font-bold" id="feels-like"></p>
+                            </div>
+                            <div class="mb-4 md:mb-0">
+                                <p><i class="fas fa-wind"></i> Wind</p>
+                                <p class="text-2xl font-bold" id="wind-speed"></p>
+                            </div>
+                            <div class="mb-4 md:mb-0">
+                                <p><i class="fas fa-tint"></i> Weather</p>
+                                <p class="text-2xl font-bold" id="weather-description"></p>
+                            </div>
+                            <div class="mb-4 md:mb-0">
+                                <p><i class="fas fa-sun"></i> Visivility</p>
+                                <p class="text-2xl font-bold" id="visibility"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/3 bg-gray-900 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">7-Day Forecast</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <div>Today</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-sun text-yellow-500"></i>
+                                <span>Sunny</span>
+                            </div>
+                            <div>36/22</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Tue</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-sun text-yellow-500"></i>
+                                <span>Sunny</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Wed</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-sun text-yellow-500"></i>
+                                <span>Sunny</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Thu</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-cloud text-gray-500"></i>
+<span>Cloudy</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Fri</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-cloud text-gray-500"></i>
+                                <span>Cloudy</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Sat</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-cloud-showers-heavy text-blue-500"></i>
+                                <span>Rainy</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>Sun</div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-bolt text-yellow-500"></i>
+                                <span>Storm</span>
+                            </div>
+                            <div>37/21</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const cityInput = document.querySelector('.citys');
+        const cityNameElement = document.getElementById('city-name');
+        const temperatureElement = document.getElementById('temperature');
+        const weatherConditionElement = document.getElementById('weather-condition');
+        const minTempElement = document.getElementById('min-temp');
+        const maxTempElement = document.getElementById('max-temp');
+        const realFeelElement = document.getElementById('real-feel');
+        const pressureElement = document.getElementById('pressure');
+        const humidityElement = document.getElementById('humidity');
+        const seaLevelElement = document.getElementById('sea-level');
+        const feelsLikeElement = document.getElementById('feels-like');
+        const windSpeedElement = document.getElementById('wind-speed');
+        const weatherDescriptionElement = document.getElementById('weather-description');
+        const visibilityElement = document.getElementById('visibility');
+
+        cityInput.addEventListener('input', async (e) => {
+            const city = e.target.value;
+            if (city) {
+                try {
+                    const response = await fetch(`/weather?city=${city}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const weatherData = await response.json();
+                    updateWeatherUI(weatherData);
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                    // Optionally, display an error message to the user
+                }
+            }
+        });
+
+        function updateWeatherUI(weatherData) {
+            cityNameElement.textContent = weatherData.name;
+            temperatureElement.textContent = `${Math.round(weatherData.main.temp)}°C`;
+            weatherConditionElement.textContent = weatherData.weather[0].main;
+            minTempElement.textContent = `${Math.round(weatherData.main.temp_min)}°C`;
+            maxTempElement.textContent = `${Math.round(weatherData.main.temp_max)}°C`;
+            realFeelElement.textContent = `${Math.round(weatherData.main.feels_like)}°C`;
+            pressureElement.textContent = `${weatherData.main.pressure} hPa`;
+            humidityElement.textContent = `${weatherData.main.humidity}%`;
+            seaLevelElement.textContent = `${weatherData.main.sea_level} hPa`;
+            feelsLikeElement.textContent = `${Math.round(weatherData.main.feels_like)}°C`;
+            windSpeedElement.textContent = `${weatherData.wind.speed} km/h`;
+            weatherDescriptionElement.textContent = weatherData.weather[0].description;
+            visibilityElement.textContent = `${weatherData.visibility} meters`;
+        }
+    </script>
+</body>
+
+</html>

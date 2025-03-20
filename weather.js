@@ -38,6 +38,8 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(8080, '127.0.0.1', () => {
-    console.log('Server is live now');
+const port = process.env.PORT || 8080;
+
+server.listen(port, '0.0.0.0', () => {
+    console.log(`Server is live on port ${port}`);
 });
